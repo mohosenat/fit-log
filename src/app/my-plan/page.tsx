@@ -76,32 +76,32 @@ export default function MyPlanPage() {
 
         {/* TABS + SORT */}
         <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          {/* TABS */}
-          <div className="flex w-fit rounded-lg border border-[#252b32] bg-[#171b21] p-1">
-            <button
-              type="button"
-              onClick={() => setTab("plan")}
-              className={`rounded-md px-5 py-2.5 text-sm font-semibold transition ${
-                tab === "plan"
-                  ? "bg-[#232932] text-white shadow-[inset_0_0_0_1px_#303741]"
-                  : "text-[#737b84] hover:text-white"
-              }`}
-            >
-              Today&apos;s Plan
-            </button>
+{/* TABS */}
+<div className="inline-flex w-fit items-center rounded-[15px] bg-[#1a1e23] p-[4px]">
+  <button
+    type="button"
+    onClick={() => setTab("plan")}
+    className={`h-[38px] rounded-[13px] px-[19px] text-[14px] font-medium leading-none transition-colors duration-200 ${
+      tab === "plan"
+        ? "bg-[#0f1115] text-[#ccff00]"
+        : "bg-transparent text-[#737b84] hover:text-white"
+    }`}
+  >
+    Today&apos;s Plan
+  </button>
 
-            <button
-              type="button"
-              onClick={() => setTab("saved")}
-              className={`rounded-md px-5 py-2.5 text-sm font-semibold transition ${
-                tab === "saved"
-                  ? "bg-[#232932] text-white shadow-[inset_0_0_0_1px_#303741]"
-                  : "text-[#737b84] hover:text-white"
-              }`}
-            >
-              Saved
-            </button>
-          </div>
+  <button
+    type="button"
+    onClick={() => setTab("saved")}
+    className={`h-[38px] rounded-[13px] px-[19px] text-[14px] font-medium leading-none transition-colors duration-200 ${
+      tab === "saved"
+        ? "bg-[#0f1115] text-[#ccff00]"
+        : "bg-transparent text-[#737b84] hover:text-white"
+    }`}
+  >
+    Saved
+  </button>
+</div>
 
           {/* SORT */}
           <div className="flex items-center gap-3">
