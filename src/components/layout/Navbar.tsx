@@ -19,36 +19,39 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-[#191d22] bg-[#0b0d0f]/95 backdrop-blur">
-      <div className="fit-container flex h-[58px] items-center justify-between gap-4">
 
-        {/* Logo */}
+      {/* ================= DESKTOP / MAIN NAVBAR ================= */}
+      <div className="fit-container flex h-[68px] items-center justify-between gap-8">
+
+        {/* ================= LOGO ================= */}
         <Link
           href="/"
           onClick={() => setOpen(false)}
-          className="flex shrink-0 items-center gap-2"
+          className="flex shrink-0 items-center gap-2.5"
         >
           <Image
             src={logo}
             alt="FitLog logo"
-            width={26}
-            height={26}
+            width={30}
+            height={30}
             priority
-            className="h-[26px] w-[26px] object-contain"
+            className="h-[30px] w-[30px] object-contain"
           />
 
-          <span className="fit-display text-[13px] font-bold tracking-[0.06em] text-white">
+          <span className="fit-display text-[20px] font-bold tracking-[0.07em] text-white">
             FITLOG
           </span>
         </Link>
 
-        {/* Navigation */}
-        <nav className="hidden items-center gap-5 md:flex">
+        {/* ================= CENTER NAVIGATION ================= */}
+        <nav className="hidden items-center gap-9 md:flex">
+
           <Link
             href="/"
-            className={`text-[10px] font-medium transition ${
+            className={`text-[12px] font-medium transition-colors duration-200 ${
               workoutActive
                 ? "text-[#ccff00]"
-                : "text-[#8b9199] hover:text-white"
+                : "text-[#d5d8dc] hover:text-white"
             }`}
           >
             Workout
@@ -56,104 +59,114 @@ export default function Navbar() {
 
           <Link
             href="/my-plan"
-            className={`text-[10px] font-medium transition ${
+            className={`text-[12px] font-medium transition-colors duration-200 ${
               planActive
                 ? "text-[#ccff00]"
-                : "text-[#8b9199] hover:text-white"
+                : "text-[#d5d8dc] hover:text-white"
             }`}
           >
             My Plan
           </Link>
+
         </nav>
 
-        {/* Counters */}
-        <div className="hidden items-center gap-4 md:flex">
+        {/* ================= RIGHT SIDE ================= */}
+        <div className="hidden items-center gap-6 md:flex">
+
+          {/* PLAN */}
           <Link
             href="/my-plan"
-            className="flex items-center gap-1.5 text-[10px] text-white"
+            className="group flex items-center gap-2 text-[12px] font-medium text-[#d5d8dc] transition-colors duration-200 hover:text-white"
           >
-            Plan
+            <span>Plan</span>
 
-            <span className="flex h-[16px] min-w-[16px] items-center justify-center rounded-full bg-[#ccff00] px-1 text-[9px] font-bold text-black">
+            <span className="flex h-[21px] min-w-[21px] items-center justify-center rounded-full bg-[#ccff00] px-1.5 text-[12px] leading-none text-[#0b0d0f] transition-colors duration-200 group-hover:scale-103">
               {plan.length}
             </span>
           </Link>
 
+          {/* SAVED */}
           <Link
             href="/my-plan?tab=saved"
-            className="flex items-center gap-1.5 text-[10px] text-white"
+            className="group flex items-center gap-2 text-[12px] font-medium text-[#d5d8dc] transition-colors duration-200 hover:text-white"
           >
-            Saved
+            <span>Saved</span>
 
-            <span className="flex h-[16px] min-w-[16px] items-center justify-center rounded-full border border-[#555b63] px-1 text-[9px] text-white">
+            <span className="flex h-[21px] min-w-[21px] items-center justify-center rounded-full border border-[#555b63] px-1.5 text-[12px] leading-none text-[#d5d8dc] transition-colors duration-200 group-hover:border-[#858c95] group-hover:text-white">
               {saved.length}
             </span>
           </Link>
+
         </div>
 
-        {/* Mobile Menu Button */}
+        {/* ================= MOBILE MENU BUTTON ================= */}
         <button
           type="button"
           onClick={() => setOpen((current) => !current)}
           aria-label="Toggle navigation"
           aria-expanded={open}
-          className="text-[#ccff00] md:hidden"
+          className="text-[#ccff00] transition-opacity duration-200 hover:opacity-80 md:hidden"
         >
-          {open ? <X size={20} /> : <Menu size={20} />}
+          {open ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
 
-      {/* Mobile Navigation */}
+      {/* ================= MOBILE NAVIGATION ================= */}
       {open && (
-        <nav className="border-t border-[#191d22] bg-[#0b0d0f] px-4 pb-4 md:hidden">
-          <div className="fit-container flex flex-col gap-4 pt-4">
+        <nav className="border-t border-[#191d22] bg-[#0b0d0f] px-4 pb-5 md:hidden">
+          <div className="fit-container flex flex-col gap-5 pt-5">
 
+            {/* WORKOUT */}
             <Link
               href="/"
               onClick={() => setOpen(false)}
-              className={
+              className={`text-[14px] font-medium transition-colors duration-200 ${
                 workoutActive
-                  ? "text-sm text-[#ccff00]"
-                  : "text-sm text-[#a4aab1]"
-              }
+                  ? "text-[#ccff00]"
+                  : "text-[#858c95] hover:text-white"
+              }`}
             >
               Workout
             </Link>
 
+            {/* MY PLAN */}
             <Link
               href="/my-plan"
               onClick={() => setOpen(false)}
-              className={
+              className={`text-[14px] font-medium transition-colors duration-200 ${
                 planActive
-                  ? "text-sm text-[#ccff00]"
-                  : "text-sm text-[#a4aab1]"
-              }
+                  ? "text-[#ccff00]"
+                  : "text-[#858c95] hover:text-white"
+              }`}
             >
               My Plan
             </Link>
 
-            <div className="flex items-center gap-5 border-t border-[#252a30] pt-4">
+            {/* MOBILE COUNTERS */}
+            <div className="flex items-center gap-6 border-t border-[#252a30] pt-5">
 
+              {/* PLAN */}
               <Link
                 href="/my-plan"
                 onClick={() => setOpen(false)}
-                className="flex items-center gap-2 text-xs text-white"
+                className="group flex items-center gap-2 text-[12px] font-medium text-[#d5d8dc] transition-colors duration-200 hover:text-white"
               >
-                Plan
+                <span>Plan</span>
 
-                <span className="rounded-full bg-[#ccff00] px-2 py-0.5 text-[10px] font-bold text-black">
+                <span className="flex h-[21px] min-w-[21px] items-center justify-center rounded-full bg-[#ccff00] px-1.5 text-[10px] font-bold leading-none text-[#0b0d0f]">
                   {plan.length}
                 </span>
               </Link>
 
+              {/* SAVED */}
               <Link
                 href="/my-plan?tab=saved"
                 onClick={() => setOpen(false)}
-                className="flex items-center gap-2 text-xs text-white"
+                className="group flex items-center gap-2 text-[12px] font-medium text-[#d5d8dc] transition-colors duration-200 hover:text-white"
               >
-                Saved
+                <span>Saved</span>
 
-                <span className="rounded-full border border-[#555b63] px-2 py-0.5 text-[10px] text-white">
+                <span className="flex h-[21px] min-w-[21px] items-center justify-center rounded-full border border-[#555b63] px-1.5 text-[10px] leading-none text-[#d5d8dc] transition-colors duration-200 group-hover:border-[#858c95] group-hover:text-white">
                   {saved.length}
                 </span>
               </Link>
