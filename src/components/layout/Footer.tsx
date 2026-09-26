@@ -4,25 +4,30 @@ import logo from "@/assets/logo.png";
 export default function Footer() {
   return (
     <footer className="border-t border-[#1c2025] bg-[#090b0d]">
-      <div className="fit-container flex min-h-[70px] flex-col items-start justify-center gap-3 py-5 sm:flex-row sm:items-center sm:justify-between">
+      <div className="fit-container flex items-center justify-between gap-4 py-7">
 
         {/* Brand */}
-        <div className="flex items-center gap-2">
+        <div className="flex shrink-0 items-center gap-2">
           <Image
             src={logo}
             alt="FitLog logo"
-            width={20}
-            height={20}
-            className="h-5 w-5 object-contain"
+            width={22}
+            height={22}
+            className="h-[22px] w-[22px] object-contain"
           />
 
-          <span className="fit-display text-[10px] font-bold tracking-[0.08em] text-white">
+          <span className="fit-display text-[11px] font-bold tracking-[0.08em] text-white sm:text-[13px]">
             FITLOG
           </span>
         </div>
 
-        {/* Copyright */}
-        <p className="text-[9px] text-[#555d66]">
+        {/* Mobile Copyright */}
+        <p className="text-right text-[10px] text-[#555d66] sm:hidden">
+          © 2026 FitLog
+        </p>
+
+        {/* Desktop Copyright */}
+        <p className="hidden text-right text-[11px] text-[#555d66] sm:block">
           © 2026 FitLog — Workout Library. Train hard, log honest.
         </p>
 
