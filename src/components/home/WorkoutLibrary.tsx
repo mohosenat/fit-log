@@ -56,11 +56,11 @@ export default function WorkoutLibrary() {
 
       {/* Loading State */}
       {loading && (
-        <div className="grid min-h-[400px] place-items-center rounded-lg border border-[#1d2227] bg-[#0d1013]">
+        <div className="grid min-h-[280px] place-items-center rounded-lg border border-[#1d2227] bg-[#0d1013]">
           <div className="text-center">
-            <div className="mx-auto mb-4 h-9 w-9 animate-spin rounded-full border-2 border-[#30363d] border-t-[#ccff00]" />
+            <div className="mx-auto mb-4 h-8 w-8 animate-spin rounded-full border-2 border-[#30363d] border-t-[#ccff00]" />
 
-            <p className="fit-display text-sm uppercase tracking-[0.08em] text-[#7b838c]">
+            <p className="fit-display text-sm uppercase tracking-[0.08em] text-[#6f7780]">
               Loading workouts…
             </p>
           </div>

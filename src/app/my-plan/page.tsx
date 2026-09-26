@@ -64,9 +64,9 @@ export default function MyPlanPage() {
 
         {/* PAGE HEADER */}
         <section className="mb-9">
-          <h1 className="fit-display text-4xl font-bold uppercase leading-none tracking-[-0.03em] text-white sm:text-5xl md:text-6xl">
-            MY PLAN
-          </h1>
+         <h1 className="fit-display text-[38px] font-bold uppercase leading-[0.95] tracking-[-0.025em] text-white sm:text-[42px]">
+           MY PLAN
+         </h1>
 
           <p className="mt-4 max-w-[560px] text-sm leading-6 text-[#747c85] sm:text-base">
             Cap of five lifts for today. Finish them, then load more.
@@ -80,78 +80,70 @@ export default function MyPlanPage() {
           calories={calories}
         />
 
-        {/* TABS + SORT */}
-        <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+ {/* TABS + SORT */}
+<div className="mt-9 flex items-center justify-between gap-2 sm:gap-4">
 
-          {/* TABS */}
-          <div className="inline-flex w-fit items-center rounded-[15px] bg-[#1a1e23] p-[4px]">
+  {/* TABS */}
+  <div className="min-w-0 shrink">
+    <div className="inline-flex items-center rounded-[15px] bg-[#1a1e23] p-[4px]">
+      
+      <button
+        type="button"
+        onClick={() => setTab("plan")}
+        className={`h-[38px] rounded-[12px] px-3 text-[13px] font-medium leading-none transition-colors duration-200 sm:px-[19px] sm:text-[14px] ${
+          tab === "plan"
+            ? "bg-[#0f1115] text-[#ccff00]"
+            : "bg-transparent text-[#737b84] hover:text-white"
+        }`}
+      >
+        Today&apos;s Plan
+      </button>
 
-            <button
-              type="button"
-              onClick={() => setTab("plan")}
-              className={`h-[38px] rounded-[12px] px-[19px] text-[14px] font-medium leading-none transition-colors duration-200 ${
-                tab === "plan"
-                  ? "bg-[#0f1115] text-[#ccff00]"
-                  : "bg-transparent text-[#737b84] hover:text-white"
-              }`}
-            >
-              Today&apos;s Plan
-            </button>
+      <button
+        type="button"
+        onClick={() => setTab("saved")}
+        className={`h-[38px] rounded-[12px] px-3 text-[13px] font-medium leading-none transition-colors duration-200 sm:px-[19px] sm:text-[14px] ${
+          tab === "saved"
+            ? "bg-[#0f1115] text-[#ccff00]"
+            : "bg-transparent text-[#737b84] hover:text-white"
+        }`}
+      >
+        Saved
+      </button>
 
-            <button
-              type="button"
-              onClick={() => setTab("saved")}
-              className={`h-[38px] rounded-[12px] px-[19px] text-[14px] font-medium leading-none transition-colors duration-200 ${
-                tab === "saved"
-                  ? "bg-[#0f1115] text-[#ccff00]"
-                  : "bg-transparent text-[#737b84] hover:text-white"
-              }`}
-            >
-              Saved
-            </button>
+    </div>
+  </div>
 
-          </div>
+  {/* SORT */}
+  <div className="flex shrink-0 items-center gap-3">
 
-          {/* SORT */}
-          <div className="flex items-center gap-3">
+    <span className="hidden text-xs font-medium text-[#626a73] sm:block sm:text-sm">
+      Sort By
+    </span>
 
-            <span className="text-sm font-medium text-[#626a73]">
-              Sort By
-            </span>
+    <div className="relative">
+      <select
+        value={sort}
+        onChange={(event) =>
+          setSort(event.target.value as SortOption)
+        }
+        className="h-10 w-[105px] cursor-pointer appearance-none rounded-lg border border-[#252c34] bg-[#111418] py-0 pl-3 pr-8 text-xs font-medium text-[#d0d4d8] outline-none transition-colors duration-200 hover:border-[#3a424b] focus:border-[#ccff00] sm:w-[110px] sm:text-sm"
+      >
+        <option value="duration">Duration</option>
+        <option value="calories">Calories</option>
+        <option value="rating">Rating</option>
+      </select>
 
-            <div className="relative">
+      <ChevronDown
+        size={15}
+        strokeWidth={2}
+        className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-[#737b84]"
+      />
+    </div>
 
-              <select
-                value={sort}
-                onChange={(event) =>
-                  setSort(event.target.value as SortOption)
-                }
-                className="h-10 min-w-[130px] cursor-pointer appearance-none rounded-lg border border-[#252c34] bg-[#111418] py-0 pl-3 pr-9 text-sm font-medium text-[#d0d4d8] outline-none transition-colors duration-200 hover:border-[#3a424b] focus:border-[#ccff00]"
-              >
-                <option value="duration">
-                  Duration
-                </option>
+  </div>
 
-                <option value="calories">
-                  Calories
-                </option>
-
-                <option value="rating">
-                  Rating
-                </option>
-              </select>
-
-              <ChevronDown
-                size={15}
-                strokeWidth={2}
-                className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-[#737b84]"
-              />
-
-            </div>
-
-          </div>
-
-        </div>
+</div>
 
         {/* WORKOUT LIST */}
         <div className="mt-7 space-y-3">
