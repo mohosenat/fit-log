@@ -11,7 +11,7 @@ export default function WorkoutCard({
   return (
     <Link
       href={`/workout/${workout.id}`}
-      className="group fit-card block overflow-hidden transition duration-200 hover:-translate-y-1 hover:border-[#384047]"
+     className="group block overflow-hidden rounded-lg border border-[#20252b] bg-[#111418] transition-colors duration-150 hover:border-[#46515c]"
     >
       {/* IMAGE */}
       <div className="aspect-[1.82] overflow-hidden bg-[#181c20]">

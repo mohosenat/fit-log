@@ -94,10 +94,6 @@ a {
     box-shadow 200ms ease;
 }
 
-.fit-card:hover {
-  border-color: var(--fit-lime);
-}
-
 /* ─────────────────────────────
    Utility Classes
 ───────────────────────────── */

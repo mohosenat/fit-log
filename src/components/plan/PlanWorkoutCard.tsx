@@ -91,7 +91,7 @@ export default function PlanWorkoutCard({
           {/* VIEW DETAILS */}
           <Link
             href={`/workout/${workout.id}`}
-            className="flex h-10 items-center justify-center whitespace-nowrap rounded-full border border-[#343b44] px-5 text-sm font-medium text-[#d2d6da] transition hover:border-[#59616b] hover:text-white"
+           className="flex h-8 items-center justify-center whitespace-nowrap rounded-full border border-[#343b44] px-3 text-[11px] font-medium text-[#d2d6da] transition hover:border-[#59616b] hover:text-white sm:h-10 sm:px-5 sm:text-sm"
           >
             View Details
           </Link>
@@ -102,11 +102,11 @@ export default function PlanWorkoutCard({
               type="button"
               onClick={() => markDone(workout.id)}
               disabled={done}
-              className={`flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded-full px-5 text-sm font-bold transition ${
-                done
-                  ? "bg-[#263000] text-[#ccff00]"
-                  : "bg-[#ccff00] text-[#0b0d0f] hover:brightness-105"
-              }`}
+              className={`flex h-8 items-center justify-center gap-2 whitespace-nowrap rounded-full px-2.5 text-[11px] font-bold transition sm:h-10 sm:gap-2 sm:px-5 sm:text-sm ${
+  done
+    ? "bg-[#263000] text-[#ccff00]"
+    : "bg-[#ccff00] text-[#0b0d0f] hover:brightness-105"
+}`}
             >
               <Check size={14} strokeWidth={2.8} />
 

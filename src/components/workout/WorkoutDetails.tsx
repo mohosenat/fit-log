@@ -35,7 +35,7 @@ export default function WorkoutDetails({
   const saved = isSaved(workout.id);
 
   return (
-    <main className="fit-container pb-3 pt-9 md:pb-5 md:pt-12">
+   <main className="fit-container pb-6 pt-20 md:pb-0 md:pt-24">
       <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-[1.04fr_.96fr] lg:gap-10">
 
         {/* ================= LEFT IMAGE ================= */}
@@ -135,14 +135,14 @@ export default function WorkoutDetails({
           </div>
 
           {/* ================= BUTTONS ================= */}
-          <div className="mt-8 flex flex-wrap items-center gap-3">
+          <div className="mt-8 flex items-center gap-2 sm:gap-3">
 
             {/* ADD TO PLAN */}
             <button
               type="button"
               onClick={() => addToPlan(workout)}
               disabled={inPlan}
-              className="flex h-[40px] items-center justify-center gap-2 rounded-[5px] bg-[#ccff00] px-5 text-[10px] font-extrabold uppercase text-[#0b0d0f] transition hover:brightness-105 disabled:cursor-default disabled:opacity-60"
+              className="flex h-[36px] flex-1 items-center justify-center gap-1.5 rounded-[5px] bg-[#ccff00] px-3 text-[9px] font-extrabold uppercase text-[#0b0d0f] transition hover:brightness-105 disabled:cursor-default disabled:opacity-60 sm:h-[40px] sm:flex-none sm:gap-2 sm:px-5 sm:text-[10px]"
             >
               {inPlan ? (
                 <Check size={13} strokeWidth={2.5} />
@@ -160,7 +160,7 @@ export default function WorkoutDetails({
               type="button"
               onClick={() => saveWorkout(workout)}
               disabled={saved}
-              className="flex h-[40px] items-center justify-center gap-2 rounded-[5px] border border-[#343b43] bg-transparent px-5 text-[10px] font-semibold uppercase text-[#c5c9ce] transition hover:border-[#ccff00] hover:text-white disabled:cursor-default disabled:opacity-60"
+            className="flex h-[36px] flex-1 items-center justify-center gap-1.5 rounded-[5px] border border-[#343b43] bg-transparent px-3 text-[9px] font-semibold uppercase text-[#c5c9ce] transition hover:border-[#ccff00] hover:text-white disabled:cursor-default disabled:opacity-60 sm:h-[40px] sm:flex-none sm:gap-2 sm:px-5 sm:text-[10px]"
             >
               {saved ? (
                 <Check size={13} strokeWidth={2.5} />

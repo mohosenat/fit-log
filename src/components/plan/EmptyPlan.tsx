@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function EmptyPlan() {
   return (
-    <div className="grid min-h-[300px] place-items-center rounded-[10px] border border-dashed border-[#2b3138] bg-[#0d1013] px-6 py-12 text-center">
+    <div className="grid min-h-[350px] place-items-center rounded-[10px] border border-dashed border-[#2b3138] bg-[#0d1013] px-6 py-12 text-center">
       <div>
         {/* TITLE */}
         <h2 className="fit-display text-[24px] font-semibold uppercase tracking-[-0.01em] text-white sm:text-[26px]">
