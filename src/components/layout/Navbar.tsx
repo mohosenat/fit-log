@@ -83,11 +83,18 @@ export default function Navbar() {
         <div className="flex shrink-0 items-center gap-2 md:gap-6">
 
           {/* PLAN */}
-          <Link
-            href="/my-plan"
-            aria-label={`Today's plan: ${plan.length} workouts`}
-            className="group flex items-center"
-          >
+ <Link
+  href="/my-plan"
+  aria-label={`Today's plan: ${plan.length} workouts`}
+  onClick={() => {
+    window.dispatchEvent(
+      new CustomEvent("fitlog-tab-change", {
+        detail: "plan",
+      })
+    );
+  }}
+  className="group flex items-center"
+>
             
             <span className="mr-2 hidden text-[12px] font-medium text-[#d5d8dc] transition-colors duration-200 group-hover:text-white md:block">
               Plan
@@ -98,12 +105,19 @@ export default function Navbar() {
             </span>
           </Link>
 
-          {/* SAVED */}
-          <Link
-            href="/my-plan"
-            aria-label={`Saved workouts: ${saved.length}`}
-            className="group flex items-center"
-          >
+         {/* SAVED */}
+<Link
+  href="/my-plan"
+  aria-label={`Saved workouts: ${saved.length}`}
+  onClick={() => {
+    window.dispatchEvent(
+      new CustomEvent("fitlog-tab-change", {
+        detail: "saved",
+      })
+    );
+  }}
+  className="group flex items-center"
+>
 
             <span className="mr-2 hidden text-[12px] font-medium text-[#d5d8dc] transition-colors duration-200 group-hover:text-white md:block">
               Saved

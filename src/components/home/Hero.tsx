@@ -1,17 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowDown } from "lucide-react";
 
 import heroImage from "@/assets/banner.png";
 
 export default function Hero() {
   return (
-    <section className="py-8 md:py-10 lg:py-12">
+    <section className="py-5 md:py-7 lg:py-12">
       <div className="fit-container">
-        <div className="grid overflow-hidden rounded-lg bg-[#15171d] md:grid-cols-2">
+        <div className="grid overflow-hidden rounded-lg bg-[#111418] md:grid-cols-2">
 
           {/* Left Content */}
-          <div className="flex flex-col justify-center px-7 py-14 sm:px-9 md:px-10 md:py-16 lg:px-14 lg:py-20">
+          <div className="flex flex-col justify-center px-7 py-9 sm:px-9 md:px-10 md:py-11 lg:px-14 lg:py-14">
             <p className="mb-5 text-xs font-bold uppercase tracking-[0.18em] text-[#ccff00]">
               WORKOUT LIBRARY
             </p>
@@ -36,7 +35,7 @@ export default function Hero() {
           </div>
 
           {/* Right Image */}
-          <div className="relative flex min-h-[360px] items-center justify-center px-8 py-12 sm:min-h-[400px] md:min-h-full md:px-10 md:py-14 lg:px-14 lg:py-16">
+         <div className="relative flex min-h-[280px] items-center justify-center px-6 py-8 sm:min-h-[320px] md:min-h-full md:px-8 md:py-10 lg:px-12 lg:py-12">
             <Image
               src={heroImage}
               alt="Workout illustration"

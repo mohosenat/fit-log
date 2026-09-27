@@ -90,12 +90,26 @@ export function FitLogProvider({
   );
 
   const removeFromPlan = useCallback(
-    (id: number) => {
-      updatePlan(plan.filter((item) => item.id !== id));
-      toast.success("Removed from today's plan");
-    },
-    [plan, updatePlan]
-  );
+  (id: number) => {
+    updatePlan(plan.filter((item) => item.id !== id));
+
+    setDoneIds((currentIds) => {
+      const nextIds = currentIds.filter(
+        (doneId) => doneId !== id
+      );
+
+      localStorage.setItem(
+        DONE_STORAGE_KEY,
+        JSON.stringify(nextIds)
+      );
+
+      return nextIds;
+    });
+
+    toast.success("Removed from today's plan");
+  },
+  [plan, updatePlan]
+);
 
   const saveWorkout = useCallback(
     (workout: Workout) => {

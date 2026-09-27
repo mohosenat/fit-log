@@ -18,13 +18,20 @@ export default function MyPlanPage() {
   const [sort, setSort] = useState<SortOption>("duration");
   const [hydrated, setHydrated] = useState(false);
 
-  useEffect(() => {
-    setHydrated(true);
+useEffect(() => {
+  setHydrated(true);
 
-    if (window.location.search.includes("tab=saved")) {
-      setTab("saved");
-    }
-  }, []);
+  const handleTabChange = (event: Event) => {
+    const customEvent = event as CustomEvent<"plan" | "saved">;
+    setTab(customEvent.detail);
+  };
+
+  window.addEventListener("fitlog-tab-change", handleTabChange);
+
+  return () => {
+    window.removeEventListener("fitlog-tab-change", handleTabChange);
+  };
+}, []);
 
   const currentItems = tab === "plan" ? plan : saved;
 
