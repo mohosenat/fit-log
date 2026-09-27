@@ -2,9 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
 
 import { useFitLog } from "@/context/FitLogContext";
 import logo from "@/assets/logo.png";
@@ -12,57 +10,68 @@ import logo from "@/assets/logo.png";
 export default function Navbar() {
   const pathname = usePathname();
   const { plan, saved } = useFitLog();
-  const [open, setOpen] = useState(false);
 
   const workoutActive = pathname === "/";
   const planActive = pathname.startsWith("/my-plan");
 
   return (
     <header className="sticky top-0 z-50 border-b border-[#191d22] bg-[#0b0d0f]/95 backdrop-blur">
-
-      {/* ================= DESKTOP / MAIN NAVBAR ================= */}
-      <div className="fit-container flex h-[68px] items-center justify-between gap-8">
+      <div className="fit-container flex h-[64px] items-center justify-between gap-3 md:h-[68px] md:gap-8">
 
         {/* ================= LOGO ================= */}
         <Link
           href="/"
-          onClick={() => setOpen(false)}
-          className="flex shrink-0 items-center gap-2.5"
+          className="flex shrink-0 items-center"
         >
+          {/* MOBILE: logo only */}
           <Image
             src={logo}
             alt="FitLog logo"
             width={30}
             height={30}
             priority
-            className="h-[30px] w-[30px] object-contain"
+            className="h-[30px] w-[30px] object-contain md:hidden"
           />
 
-          <span className="fit-display text-[20px] font-bold tracking-[0.07em] text-white">
-            FITLOG
-          </span>
+          {/* DESKTOP: logo + text */}
+          <div className="hidden items-center gap-2.5 md:flex">
+            <Image
+              src={logo}
+              alt="FitLog logo"
+              width={30}
+              height={30}
+              priority
+              className="h-[30px] w-[30px] object-contain"
+            />
+
+            <span className="fit-display text-[20px] font-bold tracking-[0.07em] text-white">
+              FITLOG
+            </span>
+          </div>
         </Link>
 
         {/* ================= CENTER NAVIGATION ================= */}
-        <nav className="hidden items-center gap-9 md:flex">
+        <nav className="flex items-center gap-1 rounded-full bg-transparent md:gap-1.5 md:bg-transparent">
 
+          {/* WORKOUT */}
           <Link
             href="/"
-            className={`text-[12px] font-medium transition-colors duration-200 ${
+            className={`flex h-[38px] items-center justify-center rounded-full px-3.5 text-[12px] font-semibold transition-colors duration-200 md:h-[42px] md:px-6 md:text-[13px] ${
               workoutActive
-                ? "text-[#ccff00]"
-                : "text-[#d5d8dc] hover:text-white"
+                ? "bg-[#202f0d] text-[#ccff00]"
+                : "text-[#9ba1a9] hover:text-white"
             }`}
           >
-            Workout
+            Workouts
           </Link>
 
+          {/* MY PLAN */}
           <Link
             href="/my-plan"
-            className={`text-[12px] font-medium transition-colors duration-200 ${
+            className={`flex h-[38px] items-center justify-center rounded-full px-3.5 text-[12px] font-semibold transition-colors duration-200 md:h-[42px] md:px-6 md:text-[13px] ${
               planActive
-                ? "text-[#ccff00]"
-                : "text-[#d5d8dc] hover:text-white"
+                ? "bg-[#202f0d] text-[#ccff00]"
+                : "text-[#9ba1a9] hover:text-white"
             }`}
           >
             My Plan
@@ -71,110 +80,42 @@ export default function Navbar() {
         </nav>
 
         {/* ================= RIGHT SIDE ================= */}
-        <div className="hidden items-center gap-6 md:flex">
+        <div className="flex shrink-0 items-center gap-2 md:gap-6">
 
           {/* PLAN */}
           <Link
             href="/my-plan"
-            className="group flex items-center gap-2 text-[12px] font-medium text-[#d5d8dc] transition-colors duration-200 hover:text-white"
+            aria-label={`Today's plan: ${plan.length} workouts`}
+            className="group flex items-center"
           >
-            <span>Plan</span>
+            
+            <span className="mr-2 hidden text-[12px] font-medium text-[#d5d8dc] transition-colors duration-200 group-hover:text-white md:block">
+              Plan
+            </span>
 
-            <span className="flex h-[21px] min-w-[21px] items-center justify-center rounded-full bg-[#ccff00] px-1.5 text-[12px] leading-none text-[#0b0d0f] transition-colors duration-200 group-hover:scale-103">
+            <span className="flex h-[26px] min-w-[26px] items-center justify-center rounded-full bg-[#ccff00] px-1.5 text-[12px] font-bold leading-none text-[#0b0d0f] transition-transform duration-150 group-hover:scale-105 md:h-[21px] md:min-w-[21px] md:text-[12px]">
               {plan.length}
             </span>
           </Link>
 
           {/* SAVED */}
           <Link
-            href="/my-plan?tab=saved"
-            className="group flex items-center gap-2 text-[12px] font-medium text-[#d5d8dc] transition-colors duration-200 hover:text-white"
+            href="/my-plan"
+            aria-label={`Saved workouts: ${saved.length}`}
+            className="group flex items-center"
           >
-            <span>Saved</span>
 
-            <span className="flex h-[21px] min-w-[21px] items-center justify-center rounded-full border border-[#555b63] px-1.5 text-[12px] leading-none text-[#d5d8dc] transition-colors duration-200 group-hover:border-[#858c95] group-hover:text-white">
+            <span className="mr-2 hidden text-[12px] font-medium text-[#d5d8dc] transition-colors duration-200 group-hover:text-white md:block">
+              Saved
+            </span>
+
+            <span className="flex h-[26px] min-w-[26px] items-center justify-center rounded-full border border-[#555b63] px-1.5 text-[12px] font-medium leading-none text-[#d5d8dc] transition-colors duration-200 group-hover:border-[#858c95] group-hover:text-white md:h-[21px] md:min-w-[21px] md:text-[12px]">
               {saved.length}
             </span>
           </Link>
 
         </div>
-
-        {/* ================= MOBILE MENU BUTTON ================= */}
-        <button
-          type="button"
-          onClick={() => setOpen((current) => !current)}
-          aria-label="Toggle navigation"
-          aria-expanded={open}
-          className="text-[#ccff00] transition-opacity duration-200 hover:opacity-80 md:hidden"
-        >
-          {open ? <X size={22} /> : <Menu size={22} />}
-        </button>
       </div>
-
-      {/* ================= MOBILE NAVIGATION ================= */}
-      {open && (
-        <nav className="border-t border-[#191d22] bg-[#0b0d0f] px-4 pb-5 md:hidden">
-          <div className="fit-container flex flex-col gap-5 pt-5">
-
-            {/* WORKOUT */}
-            <Link
-              href="/"
-              onClick={() => setOpen(false)}
-              className={`text-[14px] font-medium transition-colors duration-200 ${
-                workoutActive
-                  ? "text-[#ccff00]"
-                  : "text-[#858c95] hover:text-white"
-              }`}
-            >
-              Workout
-            </Link>
-
-            {/* MY PLAN */}
-            <Link
-              href="/my-plan"
-              onClick={() => setOpen(false)}
-              className={`text-[14px] font-medium transition-colors duration-200 ${
-                planActive
-                  ? "text-[#ccff00]"
-                  : "text-[#858c95] hover:text-white"
-              }`}
-            >
-              My Plan
-            </Link>
-
-            {/* MOBILE COUNTERS */}
-            <div className="flex items-center gap-6 border-t border-[#252a30] pt-5">
-
-              {/* PLAN */}
-              <Link
-                href="/my-plan"
-                onClick={() => setOpen(false)}
-                className="group flex items-center gap-2 text-[12px] font-medium text-[#d5d8dc] transition-colors duration-200 hover:text-white"
-              >
-                <span>Plan</span>
-
-                <span className="flex h-[21px] min-w-[21px] items-center justify-center rounded-full bg-[#ccff00] px-1.5 text-[10px] font-bold leading-none text-[#0b0d0f]">
-                  {plan.length}
-                </span>
-              </Link>
-
-              {/* SAVED */}
-              <Link
-                href="/my-plan?tab=saved"
-                onClick={() => setOpen(false)}
-                className="group flex items-center gap-2 text-[12px] font-medium text-[#d5d8dc] transition-colors duration-200 hover:text-white"
-              >
-                <span>Saved</span>
-
-                <span className="flex h-[21px] min-w-[21px] items-center justify-center rounded-full border border-[#555b63] px-1.5 text-[10px] leading-none text-[#d5d8dc] transition-colors duration-200 group-hover:border-[#858c95] group-hover:text-white">
-                  {saved.length}
-                </span>
-              </Link>
-
-            </div>
-          </div>
-        </nav>
-      )}
     </header>
   );
 }
